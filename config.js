@@ -1,6 +1,5 @@
 var configs = {};
-configs.port = 3000;
-configs.dbName = 'CrossoverVideosAssignment';
-configs.dbHost = 'localhost';
+configs.applicationPort = 3000;
+configs.dbConnectionString = 'mongodb://localhost/CrossoverJitenshaAssignment';
 
 module.exports = configs;

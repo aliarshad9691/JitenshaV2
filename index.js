@@ -11,24 +11,25 @@ db.on('error', console.error);
 //requiring local modeles
 var configs = require('./config');
 var routes = require('./routes/routes');
-var userModel = require('./models/users');
+var helperFunctions = require('./helpers/helperFunctions');
 
+// Uncomment the following lines to start logging requests to consoles.
+// app.use(morgan('combined'));
+// parse application/x-www-form-urlencoded.
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json.
+app.use(bodyParser.json());
 
-app.use(morgan('combined'));
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-app.use(bodyParser.json())
+//connedting to mongoDB
+mongoose.connect(configs.dbConnectionString);
+//populating data if DB is not already populated.
+helperFunctions.populateDb();
 
-
-
-
-
-
-
-mongoose.connect('mongodb://'+configs.dbHost+'/'+configs.dbName);
+//Initilizing routes.
 routes(app);
 
-app.listen(configs.port, function () {
-  console.log('Example app listening on port '+configs.port+'!');
+
+//Finally starting the listener
+app.listen(configs.applicationPort, function () {
+  console.log('Jitensha listening on port '+configs.applicationPort+'!');
 });
