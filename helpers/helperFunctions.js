@@ -1,4 +1,3 @@
-var Users = require('../models/users');
 var Places = require('../models/places');
 
 var helpers = {};
@@ -26,27 +25,14 @@ helpers.isAuthenticated = function(req, res, next){
 
 //Function to populate data in DB if DB is empty.
 helpers.populateDb = function(){
-	var promise = Users.get();
-	promise.then(function(data){
-		if(data.length){
-			console.log('Users table already populated.');
-		}
-		else{
-			console.log('Populating users table.');
-			Users.seed();	
-		}
-	});
 
-	var promise2 = Places.get();
-	promise2.then(function(data){
-		if(data.length){
-			console.log('Places table already populated.');
-		}
-		else{
-			console.log('Populating places table.');
-			Places.seed();	
-		}
-	});
+	/*
+		Todo: Add code to populate DB if its already not been populated.
+	*/
 }
 
 module.exports = helpers;
+
+/*
+	Todo: Fix the exception from this file.
+*/

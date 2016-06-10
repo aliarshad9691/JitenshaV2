@@ -11,9 +11,13 @@ var routesAPI = function(app){
 
 	app.post('/api/v2/auth', users.auth); //public route
 	app.post('/api/v2/register', users.register); //public route
-	app.get('/api/v2/logout', helpers.isAuthenticated, users.logout); //secure route.
-	app.post('/api/v2/rent', helpers.isAuthenticated, bookings.rent); //secure route.
-	app.get('/api/v2/places', helpers.isAuthenticated, places.list); //secure route.
+
+	/*
+		Todo: Add accessToken authentication to the following routes.
+	*/
+	app.get('/api/v2/logout', users.logout); //secure route.
+	app.post('/api/v2/rent',  bookings.rent); //secure route.
+	app.get('/api/v2/places', places.list); //secure route.
 }
 
 

@@ -33,3 +33,12 @@ routes(app);
 app.listen(configs.applicationPort, function () {
   console.log('Jitensha listening on port '+configs.applicationPort+'!');
 });
+
+
+/*
+Todos:
+1) controllers/bookings.js 		Todo: Add code to validate data and place booking.
+2) models/users.js 				Todo: Add code to register new user.
+3) helpers/helperFunctions.js 	Todo: Add code to populate DB if its already not been populated.
+4) helpers/helperFunctions.js	Todo: Fix the exception from this file.
+5) routes/routes.js 			Todo: Add accessToken authentication to routes.

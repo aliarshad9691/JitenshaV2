@@ -52,26 +52,11 @@ userModel.seed = function(){
 userModel.authUser = function(username, password){
 	var results = q.defer();
 
-	User.findOne({username: username, password: password},function(err, dbuser) {
-		if (err){
-			results.reject(err);
-		} 
 
-
-		if(dbuser){
-			
-			dbuser.activeSession = makeSessionId();
-			dbuser.markModified('string');
-			dbuser.save(function(err, dbuser){
-				results.resolve(dbuser);
-			});
-
-				
-		} else{
-			results.reject('Invalid username or password');
-		}
-	});
-
+	/*
+		Todo: Add code to register new user
+	*/
+	
 	return results.promise;
 }
 
